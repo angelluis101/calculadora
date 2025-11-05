@@ -1,0 +1,148 @@
+# -----------------------------
+# Pantalla principal de la calculadora
+# -----------------------------
+<CalculadoraScreen>:
+
+    # Contenedor principal (vertical: primero la pantalla, luego los botones)
+    MDBoxLayout:
+        orientation: "vertical"     # Organiza los elementos en columna
+        md_bg_color: 0.7, 1, 0, 1   # Fondo verde
+        padding: 20                 # Espacio interno del borde
+        spacing: 10                 # Espacio entre los elementos
+
+        # -----------------------------
+        # CUADRO DE TEXTO (pantalla donde se muestran los números)
+        # -----------------------------
+        MDTextField:
+            id: display                  # Identificador para usarlo desde el código .py
+            multiline: False              # Solo permite una línea de texto
+            readonly: True                # No se puede escribir directamente
+            halign: "right"               # Texto alineado a la derecha
+            font_size: "30sp"             # Tamaño de letra grande
+            size_hint_y: 0.2              # Ocupa el 20% de la altura total
+            radius: [20, 20, 20, 20]      # Bordes redondeados
+            line_color_normal: 0.5, 0.5, 0.5, 1
+            line_color_focus: 0.5, 0.5, 0.5, 1
+            fill_color_normal: 1, 1, 1, 1  # Fondo blanco cuando no está seleccionado
+            fill_color_focus: 1, 1, 1, 1   # Fondo blanco cuando está seleccionado
+            mode: "fill"                  # Relleno del campo de texto
+            text_color_normal: 0, 0, 0, 1 # Color del texto (negro)
+            text_color_focus: 0, 0, 0, 1  # Color del texto (negro)
+            padding: 20, 10, 20, 10       # Espacio interno dentro del campo
+
+        # -----------------------------
+        # CONTENEDOR DE BOTONES
+        # -----------------------------
+        GridLayout:
+            cols: 4                # Número de columnas (4 por fila)
+            spacing: 15            # Espacio entre los botones
+            padding: 15            # Espacio alrededor del grupo de botones
+            size_hint_y: 0.8       # Ocupa el 80% del alto de la pantalla
+
+            # -----------------------------
+            # FILA 1
+            # -----------------------------
+            MDRaisedButton:
+                text: "7"                            # Texto del botón
+                md_bg_color: 0.0, 0.5, 0.0, 1        # Color verde oscuro
+                size_hint: 1, 1                      # Se ajusta automáticamente al tamaño disponible
+                on_release: root.press("7")          # Llama a la función 'press' del .py con el valor "7"
+
+            MDRaisedButton:
+                text: "8"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("8")
+
+            MDRaisedButton:
+                text: "9"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("9")
+
+            MDRaisedButton:
+                text: "+"                            # Botón de suma
+                md_bg_color: 0.7, 0.7, 0.7, 1        # Gris
+                size_hint: 1, 1
+                on_release: root.press("+")
+
+            # -----------------------------
+            # FILA 2
+            # -----------------------------
+            MDRaisedButton:
+                text: "4"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("4")
+
+            MDRaisedButton:
+                text: "5"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("5")
+
+            MDRaisedButton:
+                text: "6"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("6")
+
+            MDRaisedButton:
+                text: "-"                            # Botón de resta
+                md_bg_color: 0.7, 0.7, 0.7, 1
+                size_hint: 1, 1
+                on_release: root.press("-")
+
+            # -----------------------------
+            # FILA 3
+            # -----------------------------
+            MDRaisedButton:
+                text: "1"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("1")
+
+            MDRaisedButton:
+                text: "2"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("2")
+
+            MDRaisedButton:
+                text: "3"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("3")
+
+            MDRaisedButton:
+                text: "*"                            # Botón de multiplicar
+                md_bg_color: 0.7, 0.7, 0.7, 1
+                size_hint: 1, 1
+                on_release: root.press("*")
+
+            # -----------------------------
+            # FILA 4
+            # -----------------------------
+            MDRaisedButton:
+                text: "<-"                           # Botón para borrar último número
+                md_bg_color: 0.7, 0.7, 0.7, 1
+                size_hint: 1, 1
+                on_release: root.borrar_ultimo()
+
+            MDRaisedButton:
+                text: "0"
+                md_bg_color: 0.0, 0.5, 0.0, 1
+                size_hint: 1, 1
+                on_release: root.press("0")
+
+            MDRaisedButton:
+                text: "="                            # Botón para mostrar el resultado
+                md_bg_color: 0.7, 0.7, 0.7, 1
+                size_hint: 1, 1
+                on_release: root.igual()
+
+            MDRaisedButton:
+                text: "C"                            # Botón para limpiar todo
+                md_bg_color: 0.7, 0.7, 0.7, 1
+                size_hint: 1, 1
+                on_release: root.limpiar()
